@@ -19,6 +19,7 @@ jobs:
       - run: npm install --legacy-peer-deps
       - run: npx expo install --fix
       - run: npx expo prebuild --platform android --no-install
+      - run: echo "org.gradle.jvmargs=-Xmx5g -XX:MaxMetaspaceSize=1g" >> android/gradle.properties
       - run: cd android && chmod +x gradlew && ./gradlew assembleRelease --no-daemon
       - uses: softprops/action-gh-release@v2
         with:
